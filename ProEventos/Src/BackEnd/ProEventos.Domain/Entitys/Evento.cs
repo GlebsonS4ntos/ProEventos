@@ -14,5 +14,18 @@ namespace ProEventos.Domain.Entitys
         public int Quantidade { get; set; }
         public string Lote { get; set; }
         public string ImageUrl { get; set; }
+        public bool IsAtivo { get; set; } = true;
+
+        public Evento() { }
+
+        public void UpdatEvento(Evento e)
+        {
+            Local = e.Local;
+            DataEvento = e.DataEvento;
+            Tema = e.Tema;
+            Quantidade = e.Quantidade;
+            Lote = e.Lote;
+            ImageUrl = e.ImageUrl;
+        }
     }
 }

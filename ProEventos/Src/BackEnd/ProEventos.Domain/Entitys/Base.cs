@@ -9,5 +9,6 @@ namespace ProEventos.Domain.Entitys
     public class Base
     {
         public long Id { get; set; }
+        public DateTime DataCriacao { get; set; }
     }
 }
