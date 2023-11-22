@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using ProEventos.Infraestructure;
+using ProEventos.Application;
 using ProEventos.Infraestructure.Data;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(c => c.UseSqlServer(builder.Configuration.GetConnectionString("ProEventos")));
+
+builder.Services.AddInfraEstructure();
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
