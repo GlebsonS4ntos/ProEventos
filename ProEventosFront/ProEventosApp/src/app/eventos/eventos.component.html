@@ -1,14 +1,10 @@
 <h2 class="mt-3">Eventos</h2>
 <hr>
 
-<div class="row g-3 mb-3">
-  <div class="col-auto">
-     <input type="text" class="form-control" id="BuscarEvento" placeholder="Buscar" [(ngModel)]="filtroEvento">
-  </div>
-  <div class="col-auto">
-    <button type="submit" class="btn btn-primary">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
+<div class="row mb-3">
+  <label for="BuscarEvento" class="col-sm-auto col-form-label">Filtro: </label>
+  <div class="col-sm-3">
+    <input type="text" class="form-control" id="BuscarEvento" placeholder="Buscar" [(ngModel)]="filtroEvento">
   </div>
 </div>
 
@@ -27,6 +23,7 @@
         <td>Local</td>
         <td>DataEvento</td>
         <td>Lote</td>
+        <td>Opções</td>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +37,14 @@
         <td>{{evento.local}}</td>
         <td>{{evento.dataEvento}}</td>
         <td>{{evento.lote}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-danger me-2">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+          <button type="button" class="btn btn-outline-info">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+        </td>
       </tr>
     </tbody>
     <tfoot *ngIf="eventosFiltrados.length == 0">
