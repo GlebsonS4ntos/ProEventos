@@ -10,8 +10,26 @@ export class EventosComponent implements OnInit {
   showImagens : boolean = true;
   widthImagemEvento : number = 100;
   eventos : any = [];
+  eventosFiltrados : any = [];
 
-  filtroEvento : string = "";
+  private _filtroEvento : string = "";
+
+  public get filtroEvento() : string{
+    return this._filtroEvento;
+  }
+
+  public set filtroEvento(filtro : string){
+    this._filtroEvento = filtro;
+    this.eventosFiltrados = this.filtroEvento ? this.FiltrarEventos(this.filtroEvento.toLocaleLowerCase()) : this.eventos;
+  }
+
+  public FiltrarEventos(filtro : string) : void{
+    return this.eventos.filter(
+      (evento : {tema : string, local : string}) =>
+        evento.tema.toLocaleLowerCase().indexOf(filtro) !== -1 ||
+        evento.local.toLocaleLowerCase().indexOf(filtro) !== -1
+    );
+  }
 
   constructor(private http : HttpClient) { }
 
@@ -21,7 +39,10 @@ export class EventosComponent implements OnInit {
 
   public GetEventos() : void {
     this.http.get('https://localhost:44339/api/Evento').subscribe(
-      response => this.eventos = response,
+      response => {
+        this.eventos = response;
+        this.eventosFiltrados = this.eventos;
+      },
       error =>  console.log(error)
     );
   }

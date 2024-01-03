@@ -19,7 +19,7 @@
         <th>#</th>
         <td>
           <button id="botaoMudarVisualizacaoImagem" type="button" class="btn btn-primary" (click)="MudarStatusDeExibicaoDasImagens()">
-            {{!showImagens ? "Esconder Imagem" : "Mostrar Imagem"}}
+            {{showImagens ? "Esconder Imagem" : "Mostrar Imagem"}}
           </button>
         </td>
         <td>Tema</td>
@@ -30,7 +30,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let evento of eventos, let i = index">
+      <tr *ngFor="let evento of eventosFiltrados, let i = index">
         <th>{{ i + 1 }}</th>
         <td>
           <img src="/assets/{{evento.imageUrl}}" alt="" [style.width.px]="widthImagemEvento" [collapse]="!showImagens" [isAnimated]="true">
@@ -42,7 +42,7 @@
         <td>{{evento.lote}}</td>
       </tr>
     </tbody>
-    <tfoot *ngIf="eventos.length == 0">
+    <tfoot *ngIf="eventosFiltrados.length == 0">
       <tr>
         <td>
           <h4>Sem Registros</h4>
@@ -51,5 +51,3 @@
     </tfoot>
   </table>
 </div>
-
-{{filtroEvento}}
