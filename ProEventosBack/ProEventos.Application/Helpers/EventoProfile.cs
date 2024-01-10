@@ -20,7 +20,6 @@ namespace ProEventos.Application.Helpers
                 .ForMember(e => e.ImageUrl, dto => dto.MapFrom(x => x.ImageUrl))
                 .ForMember(e => e.Local, dto => dto.MapFrom(x => x.Local))
                 .ForMember(e => e.Quantidade, dto => dto.MapFrom(x => x.Quantidade))
-                .ForMember(e => e.Lote, dto => dto.MapFrom(x => x.Lote))
                 .ForMember(e => e.Tema, dto => dto.MapFrom(x => x.Tema))
                 .ForMember(e => e.DataEvento, dto => dto.MapFrom(x => x.DataEvento));
         }
